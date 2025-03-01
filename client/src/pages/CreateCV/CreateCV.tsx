@@ -1,7 +1,7 @@
 
-import AboutMe from "../../components/AboutMe/AboutMe";
 import React, { useState } from "react";
 import TechStackSection from "../../components/TechStackSection/TechStackSection";
+import AboutMeSection from "../../components/AboutMe/AboutMe";
 
 const CreateCV: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -16,7 +16,7 @@ const CreateCV: React.FC = () => {
 
   return (
     <div>
-        {step === 1 && <h1><TechStackSection /></h1>}
+        {step === 1 && <h1><AboutMeSection nextStep={nextStep} /></h1>}
         {step === 2 && <h1><TechStackSection nextStep={nextStep} prevStep={prevStep} /></h1>}
         {step === 3 && <h1>Step 3</h1>}
 
