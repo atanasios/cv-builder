@@ -17,8 +17,10 @@ const CreateCV = () => {
 
   return (
     <div>
-        {step === 1 && <h1>dwqdq</h1>}
-        {step === 2 && <h1><TechStackSection /></h1>}
+
+        {step === 1 && <h1><AboutMeSection nextStep={nextStep} /></h1>}
+        {step === 2 && <h1><TechStackSection nextStep={nextStep} prevStep={prevStep} /></h1>}
+
         {step === 3 && <h1>Step 3</h1>}
 
         <div className="mt-4">
