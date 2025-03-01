@@ -1,6 +1,7 @@
+
+import AboutMe from "../../components/AboutMe/AboutMe";
 import React, { useState } from "react";
 import TechStackSection from "../../components/TechStackSection/TechStackSection";
-//
 
 const CreateCV: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -12,7 +13,6 @@ const CreateCV: React.FC = () => {
     const prevStep = () => {
         setStep((prev) => prev - 1);
     };
-
 
   return (
     <div>
