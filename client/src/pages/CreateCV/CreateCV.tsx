@@ -6,12 +6,12 @@ const CreateCV = () => {
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
-        setStep(step + 1);
-    }
+        setStep((prev) => prev + 1);
+    };
 
     const prevStep = () => {
-        setStep(step - 1);
-    }
+        setStep((prev) => prev - 1);
+    };
 
 
   return (
