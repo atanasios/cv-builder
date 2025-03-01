@@ -1,6 +1,5 @@
 import { useState } from "react";
 import AboutMe from "../../components/AboutMe/AboutMe";
-//
 
 const CreateCV = () => {
     const [step, setStep] = useState(1);
@@ -13,10 +12,14 @@ const CreateCV = () => {
         setStep(step - 1);
     }
 
+    const onSubmit = (values: any) => {
+        console.log(values);
+    }
+
 
   return (
     <div>
-        {step === 1 && <h1><AboutMe/></h1>}
+        {step === 1 && <h1><AboutMe onSubmit={onSubmit}/></h1>}
         {step === 2 && <h1>Step 2</h1>}
         {step === 3 && <h1>Step 3</h1>}
 
