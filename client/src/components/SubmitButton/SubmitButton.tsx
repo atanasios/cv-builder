@@ -8,9 +8,12 @@ type SubmitButtonProps = {
     disabled: boolean,
     isLoading: boolean,
     title: string,
+    onClick?: () => void,
+    props?: Record<string, string>
+    
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ( { type, disabled, title, isLoading } ) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ( { type, disabled, title, isLoading, ...props } ) => {
   return (
     <motion.button
     className="mt-5 w-full py-3 px-4 bg-gray-800 text-white 
@@ -19,6 +22,8 @@ const SubmitButton: React.FC<SubmitButtonProps> = ( { type, disabled, title, isL
     whileTap={{ scale: 0.98 }}
     type={type}
     disabled={disabled}
+    
+    {...props}
   >
     {isLoading ? <Loader className=' animate-spin mx-auto' size={24} /> : title}
   </motion.button>
