@@ -2,11 +2,21 @@ import { useState } from "react";
 import { AboutMeSchema } from "../../validations/AboutMeSchema";
 import { Formik, Form } from "formik";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { setError, setIsLoading } from "../../state/app/appSlice";
 
-const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
+type AboutMeSectionProps = {
+    nextStep: () => void;
+  };
+
+const AboutMeSection: React.FC<AboutMeSectionProps> = ( { nextStep } ) => {
+    const dispatch = useDispatch();
+    const isLoading = useSelector((state: RootState) => state.app.isLoading);
+
     const [image, setImage] = useState<File | null>(null);
-
-    const isLoading = false;
 
     const initialValues = {
         image: '',
@@ -18,14 +28,44 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
         email: '',
         bio: '',
         socials: '',
-    }
+    };
+
+    type FormValues = {
+        image: string,
+        age: string,
+        firstName: string,
+        lastName: string,
+        address: string,
+        phoneNumber: string,
+        email: string,
+        bio: string,
+        socials: string,
+      };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setImage(file);
         }
-    }
+    };
+
+    const onSubmit = async (credentials: FormValues) => {
+        try {
+          dispatch(setIsLoading(true));
+          console.log(credentials);
+          
+          //   dispatch(the form values when global state is done);
+          nextStep();
+        } catch (error: unknown) {
+          if (axios.isAxiosError(error) && error.response) {
+            dispatch(setError(error.response.data.message));
+          } else {
+            dispatch(setError("An unexpected error occurred"));
+          }
+        } finally {
+          dispatch(setIsLoading(false));
+        }
+      };
 
     return (
         <Formik
@@ -144,4 +184,4 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
     )
 }
 
-export default AboutMe;
+export default AboutMeSection;
