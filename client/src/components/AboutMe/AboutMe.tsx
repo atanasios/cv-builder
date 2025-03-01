@@ -50,7 +50,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="age"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="number"
                             placeholder="Age"
                         />
@@ -62,7 +62,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="firstName"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="text"
                             placeholder="First Name"
                         />
@@ -74,7 +74,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="lastName"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="text"
                             placeholder="Last Name"
                         />
@@ -83,7 +83,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="address"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="text"
                             placeholder="Address"
                         />
@@ -95,7 +95,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="phoneNumber"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="tel"
                             placeholder="Phone Number"
                         />
@@ -107,7 +107,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="email"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="email"
                             placeholder="Email"
                         />
@@ -116,7 +116,7 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="bio"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="text"
                             placeholder="Bio"
                         />
@@ -125,17 +125,19 @@ const AboutMe = ({ onSubmit }: { onSubmit: any }) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             name="socials"
-                            className="px-2 rounded-xl"
+                            className="px-2 rounded-xl w-2/3 xl:w-1/3"
                             type="text"
                             placeholder="Socials"
                         />
                         
-                        <SubmitButton
-                            type="submit"
-                            disabled={!isValid}
-                            isLoading={isLoading}
-                            title={"Save"}
-                        />
+                        <div className="w-2/3 xl:w-1/3">
+                            <SubmitButton
+                                type="submit"
+                                disabled={!isValid}
+                                isLoading={isLoading}
+                                title={"Save"}
+                            />
+                        </div>
                 </Form>
             )}
         </Formik>
