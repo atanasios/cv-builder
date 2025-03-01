@@ -5,6 +5,6 @@ export const workExperienceSchema = Validator.object().shape({
     company: Validator.string().required(),
     startDate: Validator.string().required(),
     endDate: Validator.string().required(),
-    description: Validator.string().required(),
-    technologies: Validator.string().required(),
+    description: Validator.string(),
+    technologies: Validator.string(),
 });
