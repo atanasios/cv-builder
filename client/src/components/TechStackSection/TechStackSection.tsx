@@ -1,101 +1,128 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../state/store';
-import { useDispatch } from 'react-redux';
-import { Form, useNavigate } from 'react-router-dom';
-import { setError, setIsLoading } from '../../state/app/appSlice';
-import notification from '../../services/notification';
-import axios from 'axios';
-import { Formik } from 'formik';
-import Input from '../Input/Input';
-import SubmitButton from '../SubmitButton/SubmitButton';
-
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { useDispatch } from "react-redux";
+import { Form } from "react-router-dom";
+import { setError, setIsLoading } from "../../state/app/appSlice";
+import notification from "../../services/notification";
+import axios from "axios";
+import { Formik } from "formik";
+import Input from "../Input/Input";
+import SubmitButton from "../SubmitButton/SubmitButton";
+import { techStackSchema } from "../../validations/techStackSchema";
 
 type FormValues = {
-    email: string;
-    password: string;
-    username: string;
+  languages: string;
+  frameworks: string;
+  databases: string;
+  additionalSkills: string;
+  cicd: string;
+  testing: string;
 };
 
-
 const TechStackSection: React.FC = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    
-    const initialValues: FormValues = { email: "", password: "", username: "" };
-    const isLoading = useSelector((state: RootState) => state.app.isLoading);
+  const initialValues: FormValues = {
+    languages: "",
+    frameworks: "",
+    databases: "",
+    additionalSkills: "",
+    cicd: "",
+    testing: "",
+  };
+  const isLoading = useSelector((state: RootState) => state.app.isLoading);
 
-    const onSubmit = async (credentials: FormValues) => {
-        try {
-          dispatch(setIsLoading(true));
-          const response = await register(credentials);
-          const user = response.data.user;
-          dispatch(setUser(user));
-          notification.success('You are now signed in');
-          navigate("/");
-        } catch (error: unknown) {
-          if (axios.isAxiosError(error) && error.response) {
-            dispatch(setError(error.response.data.message));
-          } else {
-            dispatch(setError("An unexpected error occurred"));
-          }
-        } finally {
-          dispatch(setIsLoading(false));
-        }
-      };
-    
+  const onSubmit = async (credentials: FormValues) => {
+    try {
+      //   dispatch(setIsLoading(true));
+      //   const response = await register(credentials);
+      //   const user = response.data.user;
+      //   dispatch(setUser(user));
+      //   notification.success('You are now signed in');
+      //   navigate("/");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response) {
+        dispatch(setError(error.response.data.message));
+      } else {
+        dispatch(setError("An unexpected error occurred"));
+      }
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+  };
 
   return (
     <section>
-        <Formik
-      initialValues={initialValues}
-      validationSchema={signUpSchema}
-      onSubmit={onSubmit}
-    >
-      {({ isValid, values, errors, touched }) => (
-        <Form>
-          <Input
-            name="email"
-            Icon={MailIcon}
-            type="email"
-            placeholder="Email Address"
-            className=""
-          />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={techStackSchema}
+        onSubmit={onSubmit}
+      >
+        {({ isValid, values, errors, touched }) => (
+          <Form>
+            <Input
+              name="languages"
+              Icon={MailIcon}
+              type="text"
+              placeholder="Email Address"
+              className=""
+            />
+            <Input
+              name="frameworks"
+              Icon={UserIcon}
+              type="text"
+              placeholder="Username"
+              className=""
+            />
+            <Input
+              name="databases"
+              Icon={LockIcon}
+              type="text"
+              placeholder="Password"
+              className=""
+            />
+            <Input
+              name="additionalSkills"
+              Icon={LockIcon}
+              type="text"
+              placeholder="Password"
+              className=""
+            />
 
-          <Input
-            name="username"
-            Icon={UserIcon}
-            type="text"
-            placeholder="Username"
-            className=""
-          />
-          <Input
-            name="password"
-            Icon={LockIcon}
-            type="password"
-            placeholder="Password"
-            className=""
-          />
-          {errors && errors.email && touched.email && (
-            <p className="text-red-600 text-sm  mt-2 mb-2">{errors.email}</p>
-          )}
-          {errors && errors.username && touched.username && (
-            <p className="text-red-600 text-sm  mt-2">{errors.username}</p>
-          )}
+            <Input
+              name="cicd"
+              Icon={LockIcon}
+              type="text"
+              placeholder="Password"
+              className=""
+            />
 
-          <SubmitButton
-            type="submit"
-            disabled={!isValid}
-            isLoading={isLoading}
-            title={"Sign Up"}
-          />
-        </Form>
-      )}
-    </Formik>
-      
+            <Input
+              name="testing"
+              Icon={LockIcon}
+              type="text"
+              placeholder="Password"
+              className=""
+            />
+
+            {errors && errors.languages && touched.languages && (
+              <p className="text-red-600 text-sm  mt-2 mb-2">{errors.email}</p>
+            )}
+            {errors && errors.username && touched.username && (
+              <p className="text-red-600 text-sm  mt-2">{errors.username}</p>
+            )}
+            <SubmitButton
+              type="submit"
+              disabled={!isValid}
+              isLoading={isLoading}
+              title={"Sign Up"}
+            />
+          </Form>
+        )}
+      </Formik>
     </section>
-  )
-}
+  );
+};
 
-export default TechStackSection
+export default TechStackSection;
