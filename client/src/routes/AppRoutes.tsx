@@ -15,8 +15,6 @@ import IsLoggedGuard from "../guards/isLoggedGuard";
 import Logout from "../components/Logout/Logout";
 import CreateCV from "../pages/CreateCV/CreateCV";
 
-//
-
 const AppRoutes: React.FC = () => {
   
   return (
