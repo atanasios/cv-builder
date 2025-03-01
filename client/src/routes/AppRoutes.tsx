@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import VerifiedRoute from "../guards/isVerifiedGuard";
 import IsLoggedGuard from "../guards/isLoggedGuard";
 import Logout from "../components/Logout/Logout";
+import CreateCV from "../pages/CreateCV/CreateCV";
 
 const AppRoutes: React.FC = () => {
   
@@ -22,6 +23,7 @@ const AppRoutes: React.FC = () => {
       <Loader />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/create" element={<CreateCV />} />
         <Route
           path="/auth/*"
           element={
