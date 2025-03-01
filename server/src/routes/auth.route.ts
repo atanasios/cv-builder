@@ -19,13 +19,4 @@ router.post("/reset-password/:token", authController.resetPassword);
 
 router.post("/forgot-password", authController.forgotPassword);
 
-router.get('/', cvController.getMyCV );
-
-router.post('/create', cvController.createCV );
-
-router.post('/edit/:cvId', cvController.createCV );
-
-
-router.delete('/:cvId', cvController.deleteCV );
-
 export default router;
