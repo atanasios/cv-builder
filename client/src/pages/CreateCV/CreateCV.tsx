@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AboutMe from "../../components/AboutMe/AboutMe";
+import TechStackSection from "../../components/TechStackSection/TechStackSection";
 //
 
 const CreateCV = () => {
@@ -16,8 +17,8 @@ const CreateCV = () => {
 
   return (
     <div>
-        {step === 1 && <h1><AboutMe/></h1>}
-        {step === 2 && <h1>Step 2</h1>}
+        {step === 1 && <h1>dwqdq</h1>}
+        {step === 2 && <h1><TechStackSection /></h1>}
         {step === 3 && <h1>Step 3</h1>}
 
         <div className="mt-4">
