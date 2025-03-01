@@ -107,10 +107,22 @@ const TechStackSection: React.FC = () => {
             />
 
             {errors && errors.languages && touched.languages && (
-              <p className="text-red-600 text-sm  mt-2 mb-2">{errors.email}</p>
+              <p className="text-red-600 text-sm  mt-2 mb-2">{errors.languages}</p>
             )}
-            {errors && errors.username && touched.username && (
-              <p className="text-red-600 text-sm  mt-2">{errors.username}</p>
+            {errors && errors.frameworks && touched.frameworks && (
+              <p className="text-red-600 text-sm  mt-2">{errors.frameworks}</p>
+            )}
+            {errors && errors.databases && touched.databases && (
+              <p className="text-red-600 text-sm  mt-2">{errors.databases}</p>
+            )}
+              {errors && errors.additionalSkills && touched.additionalSkills && (
+              <p className="text-red-600 text-sm  mt-2">{errors.additionalSkills}</p>
+            )}
+               {errors && errors.cicd && touched.cicd && (
+              <p className="text-red-600 text-sm  mt-2">{errors.cicd}</p>
+            )}
+              {errors && errors.testing && touched.testing && (
+              <p className="text-red-600 text-sm  mt-2">{errors.testing}</p>
             )}
             <SubmitButton
               type="submit"
