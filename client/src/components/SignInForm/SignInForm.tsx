@@ -47,6 +47,31 @@ const SignInForm: React.FC = () => {
         }
       }
 
+    const onDemoUserLoginHandler = async () => {
+      try {
+
+        const DEMO_USER_CREDENTIALS = {
+          email: 'test@abv.bg',
+          password: 'Test123!'
+        }
+
+        dispatch(setIsLoading(true));
+        const response = await login(DEMO_USER_CREDENTIALS);
+        const user = response.data.user;
+        dispatch(setUser(user));
+        notification.success('Login successful');
+        navigate('/');
+      } catch(error: unknown) {
+        if (axios.isAxiosError(error) && error.response) {
+          dispatch(setError(error.response.data.message));
+        } else {
+          dispatch(setError('An unexpected error occurred'));
+        }
+      } finally {
+        dispatch(setIsLoading(false));    
+      }
+    }
+
   return (
     <Formik
     initialValues={initialValues}
@@ -93,6 +118,13 @@ const SignInForm: React.FC = () => {
           disabled={!isValid}
           isLoading={isLoading}
           title={"Login"}
+        />
+        <SubmitButton
+          type="submit"
+          disabled={!isValid}
+          isLoading={isLoading}
+          onClick={onDemoUserLoginHandler}
+          title={"Login Demo User"}
         />
       </Form>
     )}
