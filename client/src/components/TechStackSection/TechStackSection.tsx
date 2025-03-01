@@ -9,6 +9,11 @@ import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { techStackSchema } from "../../validations/techStackSchema";
 
+type TechStackSectionProps = {
+  nextStep: () => void;
+  prevStep: () => void;
+};
+
 type FormValues = {
   languages: string;
   frameworks: string;
@@ -18,7 +23,7 @@ type FormValues = {
   testing: string;
 };
 
-const TechStackSection: React.FC = () => {
+const TechStackSection: React.FC<TechStackSectionProps> = ({ nextStep, prevStep }) => {
   const dispatch = useDispatch();
 
   const initialValues: FormValues = {
@@ -34,14 +39,10 @@ const TechStackSection: React.FC = () => {
 
   const onSubmit = async (credentials: FormValues) => {
     try {
-      console.log(credentials);
-
-      //   dispatch(setIsLoading(true));
-      //   const response = await register(credentials);
-      //   const user = response.data.user;
-      //   dispatch(setUser(user));
-      //   notification.success('You are now signed in');
-      //   navigate("/");
+      dispatch(setIsLoading(true));
+      
+      //   dispatch(the form values when global state is done);
+      nextStep();
     } catch (error: unknown) {
       if (axios.isAxiosError(error) && error.response) {
         dispatch(setError(error.response.data.message));
@@ -118,7 +119,7 @@ const TechStackSection: React.FC = () => {
               <p className="text-red-600 text-sm  mt-2">{errors.cicd}</p>
             )}
 
-                <label>Testing tools</label>
+            <label>Testing tools</label>
             <Input
               name="testing"
               type="text"
