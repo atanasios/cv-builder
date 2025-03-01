@@ -11,6 +11,7 @@ export const filterRoutes = (isAuthenticated: boolean): navBarItem[] => {
     if (!isAuthenticated && route.label === 'Logout') return false;
     if (isAuthenticated && route.label === 'Login') return false;
     if (isAuthenticated && route.label === 'Register') return false;
+    if (!isAuthenticated && route.label === 'Create CV') return false;
     return true;
   });
 
