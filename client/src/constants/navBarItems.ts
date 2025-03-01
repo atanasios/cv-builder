@@ -4,10 +4,6 @@ export const NavBarItems = [
         route: '/'
     },
     {
-        label: 'Create CV',
-        route: '/create'
-    },
-    {
         label: 'Login',
         route: '/auth/login'
     },
