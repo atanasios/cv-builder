@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get('/', verifyToken, cvController.getMyCV );
 
-router.post('/create', verifyToken, cvController.createCV );
+router.post('/', verifyToken, cvController.createCV );
 
-router.post('/edit/:cvId', verifyToken, cvController.createCV );
+router.put('/:cvId', verifyToken, cvController.createCV );
 
 router.delete('/:cvId', verifyToken, cvController.deleteCV );
 

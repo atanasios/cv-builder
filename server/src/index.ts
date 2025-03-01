@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.route";
+import cvRoutes from "./routes/cv.route";
 import { connectDatabase } from "./database/database.config";
 import trimBody from "./middlewares/trimBody";
 import cookieParser from "cookie-parser";
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(trimBody());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/cv", cvRoutes);
 
 app.use(errorHandler);
 
